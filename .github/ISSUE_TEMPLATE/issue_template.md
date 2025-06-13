@@ -1,6 +1,6 @@
 ---
 name: ISSUE_TEMPLATE
-title: "[Auto] (article original title)"
+title: "(article original title)"
 labels: ''
 translator: ''
 
