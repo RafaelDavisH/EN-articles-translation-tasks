@@ -10,10 +10,6 @@ jobs:
       issues: write
       contents: write
     steps:
-      - name: Issue does not need to generate markdown
-        if: ${{ !startsWith(github.event.issue.title, '[Auto]') }}
-        shell: bash
-        run: echo "This issue does not need to generate a markdown file." 1>&2; exit 1;
       - name: The description of the issue is empty
         if: ${{ !github.event.issue.body }}
         shell: bash
@@ -25,13 +21,13 @@ jobs:
         with:
           newsLink: "${{ github.event.issue.Body }}"
           ignoreSelector: ".ad-wrapper"
-          markDownFilePath: "./spanish/articles/"
+          markDownFilePath: "./en/articles/"
           githubToken: ${{ github.token }}
 
       - name: Git Auto Commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "${{ github.event.issue.title }}"
-          file_pattern: spanish/articles/*.md
+          file_pattern: en/articles/*.md
           commit_user_name: PageToMarkdown Bot
           commit_user_email: PageToMarkdown-bot@freeCodeCamp.org
